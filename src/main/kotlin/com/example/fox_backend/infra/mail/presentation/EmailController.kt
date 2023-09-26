@@ -1,4 +1,4 @@
-package com.example.fox_backend.infra.mail.presentation.controller
+package com.example.fox_backend.infra.mail.presentation
 
 import com.example.fox_backend.infra.mail.presentation.dto.MailResponse
 import com.example.fox_backend.infra.mail.service.CreateEmailCodeService
