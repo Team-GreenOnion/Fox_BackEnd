@@ -41,6 +41,7 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
     implementation ("org.springframework.boot:spring-boot-starter-data-redis")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+    runtimeOnly ("com.mysql:mysql-connector-j")
 }
 
 tasks.withType<KotlinCompile> {
