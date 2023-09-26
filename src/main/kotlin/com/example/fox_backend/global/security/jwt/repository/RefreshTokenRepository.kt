@@ -7,4 +7,5 @@ import java.util.Optional
 interface RefreshTokenRepository: JpaRepository<RefreshToken, Long> {
     fun existsByEmail(email : String) : Boolean
     fun findByEmail(email : String) : Optional<RefreshToken>
+    fun save(refreshToken: String)
 }
