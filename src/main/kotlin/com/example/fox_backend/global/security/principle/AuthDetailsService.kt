@@ -4,7 +4,9 @@ import com.example.fox_backend.domain.user.domain.User
 import com.example.fox_backend.domain.user.facade.UserFacade
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.stereotype.Service
 
+@Service
 class AuthDetailsService(
     private val userFacade: UserFacade
 ) : UserDetailsService {

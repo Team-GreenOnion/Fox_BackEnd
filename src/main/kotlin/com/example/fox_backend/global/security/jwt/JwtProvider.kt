@@ -9,15 +9,18 @@ import com.example.fox_backend.global.security.principle.AuthDetailsService
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
+import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
+import org.springframework.stereotype.Component
 import java.util.*
 import javax.annotation.PostConstruct
 import javax.servlet.http.HttpServletRequest
 
-
+@Component
 class JwtProvider(
+
     private val authDetailsService: AuthDetailsService,
     private val refreshTokenRepository: RefreshTokenRepository,
 
