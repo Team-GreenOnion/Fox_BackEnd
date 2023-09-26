@@ -8,9 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService
 class AuthDetailsService(
     private val userFacade: UserFacade
 ) : UserDetailsService {
-    override fun loadUserByUsername(email: String?): UserDetails {
-        val user: User? = email?.let { userFacade.getUserByEmail(it) }
-        return AuthDetails(user!!.email)
-
+    override fun loadUserByUsername(email : String) : UserDetails {
+        val user: User = email.let { userFacade.getUserByEmail(it) }
+        return AuthDetails(user.email)
     }
 }
