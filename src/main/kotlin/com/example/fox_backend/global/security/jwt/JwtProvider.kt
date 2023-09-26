@@ -31,7 +31,7 @@ class JwtProvider(
     private val refreshTokenTime: Long
 ) {
     @PostConstruct
-    protected fun init() {
+    fun init() {
         key = Base64.getEncoder().encodeToString(key.toByteArray())
     }
 
@@ -47,12 +47,12 @@ class JwtProvider(
 
     fun generateRefreshToken(email: String): String {
         val refreshToken = generateToken(email, "refresh", refreshTokenTime)
-            RefreshToken(
+        val refreshTokenEntity =  RefreshToken(
                 email = email,
                 refreshToken = refreshToken,
                 refreshTokenTime = refreshTokenTime,
             )
-        refreshTokenRepository.save(refreshToken)
+        refreshTokenRepository.save(refreshTokenEntity)
         return refreshToken
     }
 
