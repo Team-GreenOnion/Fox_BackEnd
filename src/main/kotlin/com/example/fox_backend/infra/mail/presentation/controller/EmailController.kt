@@ -1,6 +1,6 @@
-package com.example.fox_backend.infra.mail.controller
+package com.example.fox_backend.infra.mail.presentation.controller
 
-import com.example.fox_backend.infra.mail.dto.MailResponse
+import com.example.fox_backend.infra.mail.presentation.dto.MailResponse
 import com.example.fox_backend.infra.mail.service.CreateEmailCodeService
 import com.example.fox_backend.infra.mail.service.ResendCodeRequestService
 import org.springframework.web.bind.annotation.PostMapping

@@ -1,4 +1,4 @@
-package com.example.fox_backend.infra.mail.entity
+package com.example.fox_backend.infra.mail.domain
 
 import lombok.Builder
 import lombok.Getter

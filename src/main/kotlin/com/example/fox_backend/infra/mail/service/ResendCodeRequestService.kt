@@ -1,7 +1,7 @@
 package com.example.fox_backend.infra.mail.service
 
-import com.example.fox_backend.infra.mail.dto.MailResponse
-import com.example.fox_backend.infra.mail.repository.EmailCodeRepository
+import com.example.fox_backend.infra.mail.presentation.dto.MailResponse
+import com.example.fox_backend.infra.mail.domain.repository.EmailCodeRepository
 import org.springframework.stereotype.Service
 
 @Service

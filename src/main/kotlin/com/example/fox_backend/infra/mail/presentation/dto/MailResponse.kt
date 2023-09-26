@@ -1,4 +1,4 @@
-package com.example.fox_backend.infra.mail.dto
+package com.example.fox_backend.infra.mail.presentation.dto
 
 class MailResponse (
     val success : Boolean,
