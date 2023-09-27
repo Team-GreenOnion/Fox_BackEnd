@@ -23,9 +23,6 @@ class UserSignupService (
         if (!validEmailCode.isPresent) {
             throw EmailCodeMissMatchException
         }
-        if (userRepository.existsByAccountId(userSignupRequest.accountId)) {
-            throw AccountIdAlreadyExistsException  
-        }
         if (userRepository.existsByEmail(userSignupRequest.email)) {
             throw EmailAlreadyExistsException
         }
@@ -38,7 +35,6 @@ class UserSignupService (
         val password = passwordEncoder.encode(userSignupRequest.password)
         val user = User(
             email = userSignupRequest.email,
-            accountId = userSignupRequest.accountId,
             password = password,
             name = userSignupRequest.name,
             sex = userSignupRequest.sex,

@@ -10,7 +10,6 @@ import javax.persistence.Enumerated
 class User(
     id : Long?,
     val email:String,
-    val accountId: String ?= null,
     var password: String,
     val name: String,
     @Enumerated(EnumType.STRING)
