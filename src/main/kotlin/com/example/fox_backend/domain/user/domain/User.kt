@@ -6,10 +6,14 @@ import javax.persistence.Entity
 
 @Entity
 class User(
-     id : Long?,
+    id : Long?,
     val email:String,
     val accountId: String ?= null,
-    val password: String,
+    var password: String,
     val name: String,
     val sex: Sex
-) : BaseEntity(id)
+) : BaseEntity(id) {
+    fun modifyPassword(password: String) {
+        this.password = password
+    }
+}
