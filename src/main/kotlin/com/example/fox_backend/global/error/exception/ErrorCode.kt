@@ -10,7 +10,6 @@ enum class ErrorCode (
     EXPIRED_TOKEN(401, "Expired Token"),
 
     EMAIL_CODE_MISS_MATCH(400, "Email Code Miss Match"),
-    EMAIL_CODE_OR_EMAIL_MISS_MATCH(400, "EmailCode Or EMAIL Miss Match"),
     EMAIL_NOT_FOUND(404, "Email Not Found"),
     EMAIL_ALREADY_EXISTS(409, "Email Already Exists"),
 
