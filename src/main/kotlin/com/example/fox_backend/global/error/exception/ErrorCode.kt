@@ -16,4 +16,7 @@ enum class ErrorCode (
     PASSWORD_MISS_MATCH(400, "Password Miss Match"),
     USER_NOT_FOUND(404, "User Not Found"),
     NAME_ALREADY_EXISTS(409, "Name Already Exists"),
+
+    IMAGE_UPLOAD_FAILED(400, "Image Upload Failed"),
+    IMAGE_VALUE_NOT_FOUND(404, "Image Value Not Found"),
 }
