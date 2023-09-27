@@ -31,3 +31,20 @@ spring:
     live :
       accessToken : ${ACCESS_TOKEN_TIME}
       refreshToken : ${REFRESH_TOKEN_TIME}
+
+  cloud:
+    aws:
+      credentials:
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_ACCESS_KEY}
+      s3:
+        bucket: ${BUCKET}
+      region:
+        static: ${STATIC}
+      stack:
+        auto: false
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
