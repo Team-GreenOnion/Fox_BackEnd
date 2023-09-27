@@ -16,7 +16,7 @@ class ModifyPasswordService (
     @Transactional
     fun modifyPassword(modifyPasswordRequest: ModifyPasswordRequest) {
         val currentUser : User = userFacade.getCurrentUser()
-        if (modifyPasswordRequest.newPassword != modifyPasswordRequest.validPassword || passwordEncoder.matches(modifyPasswordRequest.password, currentUser.password)) {
+        if (modifyPasswordRequest.newPassword != modifyPasswordRequest.validPassword || !passwordEncoder.matches(modifyPasswordRequest.password, currentUser.password)) {
             throw PasswordMissMatchException
         }
         currentUser.modifyPassword(passwordEncoder.encode(modifyPasswordRequest.newPassword))
