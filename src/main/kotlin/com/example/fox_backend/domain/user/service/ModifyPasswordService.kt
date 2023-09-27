@@ -19,6 +19,6 @@ class ModifyPasswordService (
         if (modifyPasswordRequest.newPassword != modifyPasswordRequest.validPassword || passwordEncoder.matches(modifyPasswordRequest.password, currentUser.password)) {
             throw PasswordMissMatchException
         }
-        currentUser.modifyPassword(modifyPasswordRequest.newPassword)
+        currentUser.modifyPassword(passwordEncoder.encode(modifyPasswordRequest.newPassword))
     }
 }
