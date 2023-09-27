@@ -14,7 +14,7 @@ class AuthDetails(
         return null
     }
 
-    override fun getUsername(): String {
+    override fun getUsername(): String? {
         return email
     }
 

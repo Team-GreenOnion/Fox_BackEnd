@@ -1,5 +1,6 @@
 package com.example.fox_backend.global.security.jwt
 
+import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.filter.OncePerRequestFilter
 import javax.servlet.FilterChain
@@ -15,10 +16,11 @@ class JwtTokenFilter (
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        val bearer : String? = jwtProvider.resolveToken(request)
-        SecurityContextHolder.clearContext()
-        bearer.let { SecurityContextHolder.getContext().authentication = jwtProvider.authentication(bearer) }
-
+        val token : String? = jwtProvider.resolveToken(request)
+        if (token != null) {
+            val authentication : Authentication = jwtProvider.authentication(token)
+            SecurityContextHolder.getContext().authentication
+        }
         filterChain.doFilter(request, response)
     }
 }

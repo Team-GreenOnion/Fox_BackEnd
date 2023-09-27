@@ -9,18 +9,15 @@ import com.example.fox_backend.global.security.principle.AuthDetailsService
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
 import java.util.*
-import javax.annotation.PostConstruct
 import javax.servlet.http.HttpServletRequest
 
 @Component
 class JwtProvider(
-
     private val authDetailsService: AuthDetailsService,
     private val refreshTokenRepository: RefreshTokenRepository,
 
@@ -31,10 +28,9 @@ class JwtProvider(
     private val accessTokenTime: Long,
 
     @Value("\${spring.jwt.live.refreshToken}")
-    private val refreshTokenTime: Long
-) {
-    @PostConstruct
-    fun init() {
+    private val refreshTokenTime: Long) {
+
+    init {
         key = Base64.getEncoder().encodeToString(key.toByteArray())
     }
 
@@ -45,31 +41,41 @@ class JwtProvider(
     }
 
     fun generateAccessToken(email: String): String {
-        return generateToken(email, "access", accessTokenTime)
+        return generateJwt(email, "access", accessTokenTime)
     }
 
     fun generateRefreshToken(email: String): String {
-        val refreshToken = generateToken(email, "refresh", refreshTokenTime)
-        val refreshTokenEntity =  RefreshToken(
-                email = email,
-                refreshToken = refreshToken,
-                refreshTokenTime = refreshTokenTime,
-            )
+        val refreshToken = generateJwt(email, "refresh", refreshTokenTime)
+        val refreshTokenEntity = RefreshToken(
+            email = email,
+            refreshToken = refreshToken,
+            refreshTokenTime = refreshTokenTime,
+        )
         refreshTokenRepository.save(refreshTokenEntity)
         return refreshToken
     }
 
-    private fun generateToken(email: String, type: String, exp: Long?): String {
+    private fun generateKey(): ByteArray {
+        return Base64.getDecoder().decode(key.toByteArray())
+    }
+
+    private fun generateExpirationDate(expirationMillis: Long): Date {
+        return Date(System.currentTimeMillis() + expirationMillis * 1000)
+    }
+
+    // 수정된 함수명과 파라미터로 변경
+    private fun generateJwt(email:String, type:String, expirationMillis :Long):String{
         return Jwts.builder()
-            .signWith(SignatureAlgorithm.HS256, key.toByteArray())
+            .signWith(SignatureAlgorithm.HS256,generateKey())
             .setSubject(email)
-            .claim("type", type)
+            .claim("type",type)
             .setIssuedAt(Date())
-            .setExpiration(Date(System.currentTimeMillis() + exp!! * 1000))
+            .setExpiration(generateExpirationDate(expirationMillis))
             .compact()
     }
 
-    fun resolveToken(request: HttpServletRequest?): String? {
+
+fun resolveToken(request: HttpServletRequest?): String? {
         val bearer = request!!.getHeader(HEADER)
         return parseToken(bearer)
     }
