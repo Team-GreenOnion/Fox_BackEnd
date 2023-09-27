@@ -3,6 +3,8 @@ package com.example.fox_backend.domain.user.domain
 import com.example.fox_backend.domain.user.enums.Sex
 import com.example.fox_backend.global.entity.BaseEntity
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 
 @Entity
 class User(
@@ -11,6 +13,7 @@ class User(
     val accountId: String ?= null,
     var password: String,
     val name: String,
+    @Enumerated(EnumType.STRING)
     val sex: Sex
 ) : BaseEntity(id) {
     fun modifyPassword(password: String) {
