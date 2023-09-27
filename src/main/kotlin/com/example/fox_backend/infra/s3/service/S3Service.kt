@@ -4,32 +4,23 @@ import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
-import com.example.fox_backend.infra.s3.exception.ImageValueNotFoundException
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 import java.util.*
 
-
 @Component
-class S3Service (
+class S3Service(
     @Value("\${spring.cloud.aws.s3.bucket}")
-    private val bucketName : String,
-    private val  amazonS3 : AmazonS3
-){
-    fun uploadImage(image: MultipartFile): String? {
-        if (image.isEmpty || image.originalFilename == null) {
-            throw ImageValueNotFoundException
-        }
+    private val bucketName: String,
+    private val amazonS3: AmazonS3
+) {
+    fun uploadImage(image: MultipartFile): String {
         val fileName = UUID.randomUUID().toString() + image.originalFilename
-        try {
-            val request = PutObjectRequest(
-                bucketName, fileName, image.inputStream, getObjectMetadata(image)
-            ).withCannedAcl(CannedAccessControlList.PublicRead)
-            amazonS3.putObject(request)
-        } catch (e: Exception) {
-            throw RuntimeException(e.message)
-        }
+        val request = PutObjectRequest(
+            bucketName, fileName, image.inputStream, getObjectMetadata(image)
+        ).withCannedAcl(CannedAccessControlList.PublicRead)
+        amazonS3.putObject(request)
         return getFileUrl(fileName)
     }
 
