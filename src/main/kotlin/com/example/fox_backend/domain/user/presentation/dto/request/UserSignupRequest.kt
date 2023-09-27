@@ -4,7 +4,7 @@ import com.example.fox_backend.domain.user.enums.Sex
 
 class UserSignupRequest(
     val email :String,
-    val accountId : String?,
+    val accountId : String? = null,
     val password : String,
     val validPassword : String,
     val validEmailCode : String,
