@@ -11,8 +11,10 @@ enum class ErrorCode (
 
     EMAIL_CODE_OR_EMAIL_MISS_MATCH(400, "EmailCode Or EMAIL Miss Match"),
     EMAIL_NOT_FOUND(404, "Email Not Found"),
+    EMAIL_ALREADY_EXISTS(409, "Email Already Exists"),
 
-    USER_NOT_FOUND(404, "User Not Found"),
     PASSWORD_MISS_MATCH(400, "Password Miss Match"),
-    NAME_ALREADY_EXISTS(409, "Nickname Already Exists"),
+    USER_NOT_FOUND(404, "User Not Found"),
+    NAME_ALREADY_EXISTS(409, "Name Already Exists"),
+    ACCOUNTID_ALREADY_EXISTS(409, "AccountId Already Exists"),
 }
