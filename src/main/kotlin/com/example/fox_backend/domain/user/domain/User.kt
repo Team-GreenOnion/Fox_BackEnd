@@ -12,10 +12,14 @@ class User(
     val email:String,
     var password: String,
     val name: String,
+    var profileUrl: String,
     @Enumerated(EnumType.STRING)
     val sex: Sex
 ) : BaseEntity(id) {
     fun modifyPassword(password: String) {
         this.password = password
+    }
+    fun uploadProfile(profileUrl: String) {
+        this.profileUrl = profileUrl
     }
 }
