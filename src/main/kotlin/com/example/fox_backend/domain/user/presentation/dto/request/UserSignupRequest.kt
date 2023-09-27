@@ -7,6 +7,7 @@ class UserSignupRequest(
     val accountId : String?,
     val password : String,
     val validPassword : String,
+    val validEmailCode : String,
     val name : String,
     val sex : Sex
 )
