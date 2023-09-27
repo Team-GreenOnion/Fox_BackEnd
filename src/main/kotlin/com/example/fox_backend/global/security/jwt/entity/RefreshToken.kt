@@ -1,7 +1,7 @@
 package com.example.fox_backend.global.security.jwt.entity
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
-import javax.persistence.Id
 
 @RedisHash
 class RefreshToken (

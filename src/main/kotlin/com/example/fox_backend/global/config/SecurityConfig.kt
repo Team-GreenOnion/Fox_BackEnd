@@ -26,10 +26,10 @@ class SecurityConfig (
             .formLogin().disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
-        http.authorizeRequests()
+            .and()
+            .authorizeRequests()
             .anyRequest().permitAll()
-            .anyRequest().authenticated()
+            .and()
 
         http.addFilterBefore(JwtTokenFilter(jwtProvider), UsernamePasswordAuthenticationFilter::class.java)
 
