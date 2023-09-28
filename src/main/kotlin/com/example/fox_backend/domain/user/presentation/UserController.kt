@@ -32,9 +32,8 @@ class UserController(
         userLoginService.login(userLoginRequest)
 
     @PostMapping("/profile/upload")
-    fun uploadProfile(@RequestPart(required = false, value = "profile") profile : MultipartFile) {
+    fun uploadProfile(@RequestPart(required = false, value = "profile") profile : MultipartFile) =
         uploadUserProfileService.uploadProfile(profile)
-    }
 
     @PatchMapping("/update/password")
     fun modifyPassword(@RequestBody modifyPasswordRequest: ModifyPasswordRequest) =
