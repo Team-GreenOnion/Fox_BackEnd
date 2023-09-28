@@ -12,7 +12,7 @@ class User(
     val email:String,
     var password: String,
     val name: String,
-    var profileUrl: String,
+    var profileUrl: String? = null,
     @Enumerated(EnumType.STRING)
     val sex: Sex
 ) : BaseEntity(id) {
