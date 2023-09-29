@@ -41,6 +41,7 @@ dependencies {
     annotationProcessor ("org.projectlombok:lombok")
     runtimeOnly ("com.mysql:mysql-connector-j")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("com.googlecode.json-simple:json-simple:1.1.1")
 }
 
 tasks.withType<KotlinCompile> {
