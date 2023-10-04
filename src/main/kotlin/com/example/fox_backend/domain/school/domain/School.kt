@@ -7,7 +7,8 @@ import javax.persistence.Id
 
 @Entity
 class School(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Long? = null,
     val atptOfcdcScNm: String,
     val schulNm: String,
