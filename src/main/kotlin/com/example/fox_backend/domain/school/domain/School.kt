@@ -1,17 +1,20 @@
 package com.example.fox_backend.domain.school.domain
 
-import com.example.fox_backend.global.entity.BaseEntity
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
 
 @Entity
 class School(
-    id :Long,
-    val atpt_ofcdc_sc_nm: String,
-    val schul_nm: String,
-    val lctn_sc_nm: String,
-    val org_rdnma: String,
-    val org_telno: String,
-    val hmpg_adres: String,
-    val coedu_sc_nm: String,
-    val hs_sc_nm: String
-) : BaseEntity(id)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id : Long? = null,
+    val atptOfcdcScNm: String,
+    val schulNm: String,
+    val lctnScNm: String,
+    val orgRdnma: String,
+    val orgTelno: String,
+    val hmpgAdres: String,
+    val coeduScNm: String,
+    val hsScNm: String
+)
