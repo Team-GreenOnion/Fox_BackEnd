@@ -17,5 +17,8 @@ enum class ErrorCode (
     USER_NOT_FOUND(404, "User Not Found"),
     NAME_ALREADY_EXISTS(409, "Name Already Exists"),
 
-    SCHOOL_NOT_FOUND(404, "School Not Found")
+    SCHOOL_NOT_FOUND(404, "School Not Found"),
+
+    SELECT_1_OR_MORE_AND_3_OR_LESS(401, "Select 1 or More And 3 or Less"),
+    INTEREST_PICK_MISS_MATCH(409, "Interest Pick Miss Match")
 }
