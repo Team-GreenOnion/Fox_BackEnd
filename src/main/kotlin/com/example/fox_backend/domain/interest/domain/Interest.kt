@@ -11,9 +11,9 @@ class Interest(
     @ManyToOne
     val user: User,
 
-    var interest: List<String>
+    var interest: String
 ): BaseEntity(id) {
-    fun modifyInterest(interest: List<String>) {
+    fun modifyInterest(interest: String) {
         this.interest = interest
     }
 }
