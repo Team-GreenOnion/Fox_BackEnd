@@ -4,17 +4,16 @@ import com.example.fox_backend.domain.user.domain.User
 import com.example.fox_backend.global.entity.BaseEntity
 import javax.persistence.Entity
 import javax.persistence.ManyToOne
-import javax.persistence.OneToMany
 
 @Entity
-class Interest (
+class Interest(
     id: Long?,
     @ManyToOne
     val user: User,
 
-    var interest: String
+    var interest: List<String>
 ): BaseEntity(id) {
-    fun modifyInterest(interest: String) {
+    fun modifyInterest(interest: List<String>) {
         this.interest = interest
     }
 }
