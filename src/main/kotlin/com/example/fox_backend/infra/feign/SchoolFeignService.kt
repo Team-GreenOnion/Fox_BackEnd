@@ -14,8 +14,6 @@ private val schoolRepository: SchoolRepository
 
     @Transactional
     fun fetchAndSaveSchoolInfoToDB() {
-        println()
-        try {
             val schoolInfoResponses = schoolInfoClient.getSchoolInfo() // SchoolInfoResponse 목록을 가져옵니다.
 
             val schoolInfoEntity = School(
@@ -29,9 +27,6 @@ private val schoolRepository: SchoolRepository
                 orgTelno = schoolInfoResponses.orgTelno
             )
             schoolRepository.save(schoolInfoEntity)
-        } catch (e: Exception){
-            println("")
-        }
 
     }
 }
