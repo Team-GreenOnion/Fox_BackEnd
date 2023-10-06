@@ -1,4 +1,4 @@
-package com.example.fox_backend.domain.school.domain
+package com.example.fox_backend.infra.feign
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
